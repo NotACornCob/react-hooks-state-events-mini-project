@@ -1,19 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import CategoryFilter from "./CategoryFilter";
 import NewTaskForm from "./NewTaskForm";
 import TaskList from "./TaskList";
-
 import { CATEGORIES, TASKS } from "../data";
-console.log("Here's the data you're working with");
-console.log({ CATEGORIES, TASKS });
 
 function App() {
+const [category, selectedCategory] = useState();
+
+  function categoryHandler(e) {
+    selectedCategory(e.target.value);
+    console.log(category);
+    return (category);
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
+      <CategoryFilter categories={CATEGORIES} selectedCategory={categoryHandler}/>
       <NewTaskForm />
-      <TaskList />
+      <TaskList categories={CATEGORIES} selectedCategory={category} tasks={TASKS} index={TASKS.index} />
     </div>
   );
 }

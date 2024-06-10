@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import Task from "./Task"
+import { v4 as uuid } from "uuid";
 
-function TaskList() {
-  return (
+function TaskList( {tasks, categorySelection} ) {
+
+  const tasksToDisplay = tasks.filter((item) => {
+     if (categorySelection === "All") return true;
+     return true;
+  });
+
+  return ( 
     <div className="tasks">
-      {/* display a list of tasks using Task component */}
-    </div>
-  );
+     {tasksToDisplay.map((task) => (
+          <Task key={uuid()} text={task.text} category={task.category} />))
+     }
+   </div>
+  )
 }
-
 export default TaskList;

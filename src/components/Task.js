@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Task() {
+function Task({ category, text, taskId }) {
+  const [isVisible, setIsVisible] = useState(true);
+
+  function deleteHandler() {
+    setIsVisible(false);
+  }
+
+  if (!isVisible) {
+    return null; // Render nothing if the task item is not visible
+  }
+
   return (
-    <div className="task">
-      <div className="label">CATEGORY HERE</div>
-      <div className="text">TEXT HERE</div>
-      <button className="delete">X</button>
+    <div className="task" key={taskId}>
+      <div className="label">{category}</div>
+      <div className="text">{text}</div>
+      <button className="delete" onClick={deleteHandler}>
+        X
+      </button>
     </div>
   );
 }
