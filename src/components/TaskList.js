@@ -3,11 +3,15 @@ import Task from "./Task"
 import { v4 as uuid } from "uuid";
 
 function TaskList( {tasks, categorySelection} ) {
-
-  const tasksToDisplay = tasks.filter((item) => {
-     if (categorySelection === "All") return true;
-     return true;
+console.log(categorySelection)
+  const tasksToDisplay = tasks.filter((task) => {
+    if (categorySelection === "All") {
+      return true; //    
+    } else {
+      return task.category === categorySelection;
+    }
   });
+
 
   return ( 
     <div className="tasks">

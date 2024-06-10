@@ -5,7 +5,7 @@ import TaskList from "./TaskList";
 import { CATEGORIES, TASKS } from "../data";
 
 function App() {
-const [category, selectedCategory] = useState();
+const [category, selectedCategory] = useState("ALL");
 
   function categoryHandler(e) {
     selectedCategory(e.target.value);
@@ -18,7 +18,7 @@ const [category, selectedCategory] = useState();
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} selectedCategory={categoryHandler}/>
       <NewTaskForm />
-      <TaskList categories={CATEGORIES} selectedCategory={category} tasks={TASKS} index={TASKS.index} />
+      <TaskList categorySelection={category} tasks={TASKS} index={TASKS.index} />
     </div>
   );
 }
