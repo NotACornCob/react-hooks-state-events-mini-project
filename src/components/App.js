@@ -14,14 +14,12 @@ const [submittedData, setSubmittedData] = useState([])
 function handleSubmit(e) {
   e.preventDefault();
   const formData = {key: uuid(),
-  category: {submittedCategory},
-  text: {newTask},
+  category: submittedCategory,
+  text: newTask,
   };
   console.log("I'm Submitted")
   console.log(formData)
-  const newDataArray = [...submittedData, formData]
-  console.log(newDataArray)
-  setSubmittedData([newDataArray]);
+  setSubmittedData(formData);
 }
 
 function handleNewTaskChange(e) {
@@ -34,15 +32,13 @@ function handleSubmittedCategory(e) {
 
   function categoryHandler(e) {
     selectedCategory(e.target.value);
-    console.log(category);
-    return (category);
   }
 
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} selectedCategory={categoryHandler} categoryClass={category}/>
-      <NewTaskForm categories={CATEGORIES} tasks={TASKS} onTaskFormSubmit={handleSubmit} handleSubmittedCategory={handleSubmittedCategory} handleNewTaskChange={handleNewTaskChange} newTask={newTask}  />
+      <NewTaskForm onTaskFormSubmit={handleSubmit} handleSubmittedCategory={handleSubmittedCategory} handleNewTaskChange={handleNewTaskChange}  />
       <TaskList categorySelection={category} tasks={TASKS} index={TASKS.index} submittedData={submittedData} />
     </div>
   );

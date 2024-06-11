@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-function NewTaskForm({categories, tasks, handleNewTaskChange, handleSubmittedCategory, onTaskFormSubmit, newTask}) {
+function NewTaskForm({categories, 
+  tasks, 
+  handleNewTaskChange, 
+  handleSubmittedCategory, 
+  onTaskFormSubmit, 
+  newTask,
+  submittedCategory,
+  }) {
 
   return (
     <form onSubmit={onTaskFormSubmit} className="new-task-form">
@@ -10,7 +17,7 @@ function NewTaskForm({categories, tasks, handleNewTaskChange, handleSubmittedCat
       </label>
       <label>
         Category
-        <select name="category" onChange={handleSubmittedCategory} value="category">
+        <select name="category" onChange={handleSubmittedCategory} value="submittedCategory">
         <option value="Code">Code</option>
           <option value="Food">Food</option>
           <option value="Money">Money</option>  
