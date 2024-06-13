@@ -8,7 +8,7 @@ function Task({ category, text, taskId }) {
   }
 
   if (!isVisible) {
-    return null; // Render nothing if the task item is not visible
+    return null; 
   }
 
   return (
